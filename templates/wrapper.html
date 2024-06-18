@@ -20,23 +20,97 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 </head>
+<style>
+    .btn2{
+        display: none;
+    }
+    @media (max-width: 990px) {
+        #address {
+            display: none !important;
+        }
+    }
+    @media (max-width: 460px) {
+        .btn {
+            display: none !important;
+        }
+        .btn2 {
+            display: flex;
+        }
+        .btn2 {
+
+-moz-user-select: none;
+
+background: #e12454;
+
+border: medium none;
+
+border-radius: 0;
+
+color: #fff;
+
+cursor: pointer;
+
+display: inline-block;
+
+font-size: 14px;
+
+font-weight: 100;
+
+letter-spacing: 1px;
+
+line-height: 1;
+
+margin-bottom: 0;
+
+padding: 16px 5px;
+
+text-align: center;
+
+text-transform: uppercase;
+
+touch-action: manipulation;
+
+transition: all 0.3s ease 0s;
+
+vertical-align: middle;
+
+white-space: nowrap;
+
+position: relative;
+
+}
+
+
+
+.btn2:hover {
+
+background: #8fb569;
+
+color: #fff;
+
+        #number{
+            font-size: 16px;
+        }
+    }
+</style>
 
 <body>
 
     <!-- header begin -->
     <header>
-        <div class="top-bar d-none d-md-block">
+        <div class="top-bar d-flex d-md-block">
             <div class="container">
                 <div class="row d-flex align-items-center">
-                    <div class="col-xl-6 offset-xl-1 col-lg-6 offset-lg-1 col-md-7 offset-md-1">
+                    <div class="col-xl-6 offset-xl-1 col-lg-6 offset-lg-1 col-md-7 offset-md-1 col-8">
                         <div class="header-info">
-                            <span><a href="tel:+79054092534"><i class="fas fa-phone"></i> +7(905)-409-25-34</a></span>
+                            <span id="number"><a href="tel:+79054092534"><i class="fas fa-phone"></i> +7(905)-409-25-34</a></span>
                             <span id="address">Адрес: г. Москва, ул. Болотниковская, д. 5</span>
                         </div>
                     </div>
-                    <div class="col-xl-5 col-lg-5 col-md-4">
+                    <div class="col-xl-5 col-lg-5 col-md-4 col-4">
                         <div class="header-top-right-btn f-right">
                             <a href="{% url 'users:login' %}" class="btn">Авторизоваться</a>
+                            <a href="{% url 'users:login' %}" class="btn2">Авторизоваться</a>
                         </div>
                     </div>
                 </div>
@@ -55,7 +129,7 @@
                         <div class="header__menu f-right">
                             <nav id="mobile-menu">
                                 <ul>
-                                    <li><a href="{% url 'main_app:home' %}">Основной</a>
+                                    <li><a href="{% url 'main_app:home' %}">Главная</a>
                                     </li>
                                     <li><a href="{% url 'service_app:service' %}">Услуги</a>
                                     </li>
