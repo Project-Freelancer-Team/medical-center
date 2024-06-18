@@ -39,7 +39,7 @@
                                         <img src="{{ i.image.url }}" alt="" width="80px" height="80px">
                                     </div>
                                     <h3><a href="{% url 'service_app:service_detail' i.slug %}">{{ i.name|title  }}</a></h3>
-                                    <p>
+                                    <p style="text-transform: capitalize;">
                                         {{ i.description|truncatechars:80 }}
                                     </p>
                                 </div>

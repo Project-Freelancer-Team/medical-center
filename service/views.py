@@ -43,4 +43,5 @@ class ServiceDetailView(View):
 def service_category_deteaile(request, slug):
     context = {}
     context['objects'] = ServieCategory.objects.get(slug=slug)
+    context['services'] = Services.objects.all()
     return render(request, 'pages/service/category.html', context)
