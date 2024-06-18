@@ -195,12 +195,9 @@ color: #fff;
                                 </div>
                                 <div class="footer-menu">
                                     <ul>
-                                        <li><a href="./pages/service/service_detail.html">диагностика</a></li>
-                                        <li><a href="./pages/service/service_detail.html">уход</a></li>
-                                        <li><a href="./pages/service/service_detail.html">реабилитация</a></li>
-                                        <li><a href="./pages/service/service_detail.html">процедуры</a></li>
-                                        <li><a href="./pages/service/service_detail.html">тесты</a></li>
-                                        <li><a href="./pages/service/service_detail.html">тесты</a></li>
+                                        {% for i in services %}
+                                        <li><a href="{% url 'service_app:service_detail' i.slug %}">{{i.name|title}}</a></li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>

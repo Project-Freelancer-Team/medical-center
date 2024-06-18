@@ -40,7 +40,7 @@
                                     </div>
                                     <h3><a href="{% url 'service_app:service_detail' i.slug %}">{{ i.name|title  }}</a></h3>
                                     <p>
-                                        {{ i.description|truncatechars:81 }}
+                                        {{ i.description|truncatechars:80 }}
                                     </p>
                                 </div>
                                 <a href="{% url 'service_app:service_detail' i.slug %}" class="service-link">Читать далее</a>
