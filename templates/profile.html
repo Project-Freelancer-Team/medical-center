@@ -1,0 +1,103 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}{{ user.first_name }} {{ user.last_name }}{% endblock title %}
+{% block content %}
+  <section style="background-color: #eee;">
+    <div class="container py-5">
+      <div class="row">
+                <div class="col-12">
+                    <div class="col-lg-4" style="margin: 0 auto;">
+                        <div class="card mb-4">
+                          <div class="card-body text-center">
+                            {% if user.doctor_image %}
+                            <img src="{{ user.doctor_image.url }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                            {% else %}
+                              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                            {% endif %}
+                            <h5 class="my-3">{{ user.first_name }} {{ user.last_name }}</h5>
+                            {% if user.is_doctor %}
+                              <p class="text-muted mb-1">{{ user.doctor_type }}</p>
+                            {% else %}
+                              <p> Patient </p>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <p class="mb-0">Email</p>
+                        </div>
+                        <div class="col-sm-9">
+                          <p class="text-muted mb-0">{{ user.email }}</p>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <p class="mb-0">Username</p>
+                        </div>
+                        <div class="col-sm-9">
+                          <p class="text-muted mb-0">{{ user.username }}</p>
+                        </div>
+                      </div>
+                      <hr>
+                      {% if user.is_doctor %}
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <p class="mb-0">Specialities</p>
+                        </div>
+                        <div class="col-sm-9 d-flex flex-wrap">
+                          {% for i in user.specialities.all %}
+                          <p class="text-muted mb-0">{{ i.name }},</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+                      {% else %}
+                      <p></p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+      </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card mb-4 mb-md-0">
+              <div class="card-body">
+                <p class="mb-4"><span class="text-primary font-italic me-1">встречи</p>
+                  {% if appointments %}
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Имя и фамилия</th>
+                        <th scope="col">услуга</th>
+                        <th scope="col">Врач</th>
+                        <th scope="col">дата</th>
+                        <th scope="col">время</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for i in appointments %}
+                      <tr>
+                        <th scope="row">{{ i.id }}</th>
+                        <td>{{ i.name_and_surname}}</td>
+                        <td>{{ i.service.name }}</td>
+                        <td>{{ i.doctor.first_name }} {{ i.doctor.last_name }}</td>
+                        <td>{{ i.date }}</td>
+                        <td>{{ i.time }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  {% else %}
+                  <div>у тебя нет назначенной встречи</div>
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+{% endblock content %}

@@ -1,0 +1,95 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}Blog{% endblock title %}
+{% block content %}
+        <section class="breadcrumb-bg pt-200 pb-180" data-background="{% static 'img/page/page-bg.jpg' %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-9">
+                        <div class="page-title">
+                            <p class="small-text pb-15">Мы здесь для вашей заботы.</p>
+                            <h1>Наши блоги</h1>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 d-flex justify-content-start justify-content-md-end align-items-center">
+                        <div class="page-breadcumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb ">
+                                    <li class="breadcrumb-item">
+                                        <a href="{% url 'main_app:home' %}">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- hero-area end -->
+        <section style="margin-top: 70px;">
+            <div class="container px-4">
+                <div class="row">
+                    <div class="col d-flex justify-content-start">
+                        <form class="search-form col-xs-12 col-lg-6" method="post">
+                            {% csrf_token %}
+                            <input type="text" name="title" placeholder="Поиск статей" width="100%">
+                            <button type="submit" name="filter"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- blog-area start -->
+        <section class="blog-area pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+                    {% for i in posts %}
+                    <div class="col-lg-6 col-md-6">
+                        <article class="postbox post format-image mb-40">
+                            <div class="postbox__thumb">
+                                <a href="{% url 'blog:blog_detail' i.slug %}">
+                                    <img src="{{ i.image.url }}" alt="blog_image">
+                                </a>
+                            </div>
+                            <div class="postbox__text p-30">
+                                <h3 class="blog-title blog-title-sm">
+                                    <a href="{% url 'blog:blog_detail' i.slug %}">{{ i.title }}</a>
+                                </h3>
+                                <div class="post-text">
+                                    <p>{{ i.post_text|safe|truncatechars:80 }}</p>
+                                </div>
+                                <div class="read-more">
+                                    <a href="{% url 'blog:blog_detail' i.slug %}" class="read-more">read more <i class="fas fa-long-arrow-alt-right"></i></a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="basic-pagination basic-pagination-2 text-center">
+                            <ul>
+                                {% if page_obj.has_previous %}
+                                    <li><a href="?page={{ page_obj.previous_page_number }}"><<</a></li>
+                                {% endif %}
+                
+                                {% for p in paginator.page_range %}
+                                    <li {% if p == page_obj.number %}class="active"{% endif %}>
+                                        <a href="?page={{ p }}">{{ p }}</a>
+                                    </li>
+                                {% endfor %}
+                
+                                {% if page_obj.has_next %}
+                                    <li><a href="?page={{ page_obj.next_page_number }}">>></a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+{% endblock content %}
+     

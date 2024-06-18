@@ -1,0 +1,46 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}Review{% endblock title %}
+{% block content %}
+        <section class="appointment-area appointment-area-3 pos-rel pt-115 pb-120" data-background="{% static 'img/appoinment/appointment-bg.jpg' %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-7 col-lg-8">
+                        <div class="calculate-box white-bg">
+                            <div class="calculate-content">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="about-title news-letter-title mb-70">
+                                            <h5 class="pink-color">Оставьте свой отзыв</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <form class="col-xl-12" method="POST">
+                                        {% csrf_token %}
+                                    <div class="col-xl-12">
+                                            <div class="name">
+                                                <label for="name">Ваше имя и фамилия</label>
+                                                <input type="text" class="form-control" required name="name">
+                                            </div>
+                                            <div class="name">
+                                                <label for="name">Твоя профессия</label>
+                                                <input type="text" class="form-control" required name="person_job">
+                                            </div>
+                                            <div class="name">
+                                                <label for="name">Ваши идеи о нашем сервисе</label>
+                                                <textarea name="body" id="" class="form-control" required></textarea>
+                                            </div>
+                                    </div>
+                                    <div class="button d-flex justify-content-center">
+                                        <button type="submit" name="review" class="btn mt-40">добавить отзыв</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock content %}

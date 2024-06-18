@@ -1,0 +1,55 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block content %}
+      <section class="about-area pt-120 pb-90 primary-bg">
+        <div class="container">
+            <!-- More services -->
+            <div class="row">
+                <div class="col-xl-7 col-lg-8 col-md-12">
+                    <div class="section-title pos-rel mb-75">
+                        <div class="section-text pos-rel" >
+                            <h5 style="color: white;">Наши сервисы</h5>
+                            <h1 style="color: white;">Найдите нужную вам услугу</h1>
+                        </div>
+                        <div class="section-line pos-rel">
+                            <img src="{% static 'img/shape/section-title-line.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-4">
+                    <div class="section-button text-right pt-80">
+                        <a data-animation="fadeInLeft" data-delay=".6s" href="{% url 'appointment:appointment_main' %}"
+                            class="btn btn-icon ml-0"><span>+</span>назначить встречу</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+      <section class="about-area pt-120 pb-90">
+         <!-- Servies Main -->
+            <div class="container">
+                <div class="row">
+                    {% for i in services %}
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="service-box-3 mb-30 text-center">
+                            <div class="service-content-box">
+                                
+                                <div class="service-content">
+                                    <div class="image mb-4">
+                                        <img src="{{ i.image.url }}" alt="" width="80px" height="80px">
+                                    </div>
+                                    <h3><a href="{% url 'service_app:service_detail' i.slug %}">{{ i.name }}</a></h3>
+                                    <p>
+                                        {{ i.description|truncatechars:80 }}
+                                    </p>
+                                </div>
+                                <a href="{% url 'service_app:service_detail' i.slug %}" class="service-link">Читать далее</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}  
+                </div>
+            </div>
+        <!-- Services main end -->
+      </section>
+{% endblock content%}

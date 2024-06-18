@@ -1,0 +1,68 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}Doctors{% endblock title %}
+{% block content %}
+        <!-- hero-area start -->
+        <section class="breadcrumb-bg pt-200 pb-180" data-background="{% static 'img/page/page-bg.jpg' %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-9">
+                        <div class="page-title">
+                            <p class="small-text pb-15">Мы здесь для вашей заботы.</p>
+                            <h1>Все специалисты</h1>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 d-flex justify-content-start justify-content-md-end align-items-center">
+                        <div class="page-breadcumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb ">
+                                    <li class="breadcrumb-item">
+                                        <a href="{% url 'main_app:home' %}">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Doctor</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- hero-area end -->
+        <!-- team-area start -->
+        <section class="team-area pt-115 pb-90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+                        <div class="section-title text-center pos-rel mb-70">
+                            <div class="section-icon">
+                                <img class="section-back-icon" src="{% static 'img/section/section-back-icon.png' %}" alt="">
+                            </div>
+                            <div class="section-text pos-rel">
+                                <h5>Наша команда</h5>
+                                <h1>Профессиональный поставщик   медицинских услуг</h1>
+                            </div>
+                            <div class="section-line pos-rel">
+                                <img src="{% static 'img/shape/section-title-line.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for i in doctors %}
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="team-wrapper team-box-2 text-center mb-30">
+                            <div class="team-thumb">
+                                <img src="{{ i.doctor_image.url }}" alt="">
+                            </div>
+                            <div class="team-member-info mt-35 mb-25">
+                                <h3><a href="{% url 'doctors_app:doctors_detail' i.username %}">{{ i.first_name }} {{ i.last_name}}</a></h3>
+                                <h6 class="f-500 text-up-case letter-spacing pink-color">{{ i.doctor_type }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+{% endblock content %}
+

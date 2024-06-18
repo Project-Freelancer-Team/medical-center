@@ -1,0 +1,69 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}Appointment{% endblock title %}
+{% block content %}
+        <!-- calculate-area start -->
+        <section class="appointment-area appointment-area-3 pos-rel pt-115 pb-120" data-background="{% static 'img/appoinment/appointment-bg.jpg' %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-7 col-lg-8">
+                        <div class="calculate-box white-bg">
+                            <div class="calculate-content">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="about-title news-letter-title mb-70">
+                                            <h5 class="pink-color">Встреча</h5>
+                                            <h1>Записаться на прием</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            <div class="name">
+                                                <label for="name">получить консультанта ?</label><br>
+                                                <input type="checkbox" name="check" style="width:18px;height:18px;" value="False">
+                                            </div>
+                                            <div class="name">
+                                                <label for="name_surname">Ваше имя и фамилия</label>
+                                                <input type="text" name="name_surname" class="form-control" required>
+                                            </div>
+                                            <div class="name">
+                                                <label for="name">Выберите услугу</label>
+                                                <select name="service" id="" class="form-control">
+                                                    {% for i in services %}
+                                                    <option value="{{ i.id }}">{{ i.name }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="name">
+                                                <label for="name">Выбрать врача</label>
+                                                <select name="doctor" id="" class="form-control" required>
+                                                    {% for i in doctors %}
+                                                        <option value="{{ i.id }}">{{ i.first_name }} {{ i.last_name }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="name">
+                                                <label for="name">Дата</label>
+                                                <input type="date" name="date" class="form-control" required>
+                                            </div>
+                                            <div class="name">
+                                                <label for="name">Врем</label>
+                                                <input type="time" name="time" class="form-control" required>
+                                            </div>
+                                            <div class="button d-flex justify-content-center">
+                                                <button name="appointment" type="submit" class="btn mt-40" >Отправить запрос</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock content %}
+ 

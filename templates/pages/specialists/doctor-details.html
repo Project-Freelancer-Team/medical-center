@@ -1,0 +1,109 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}{{ doctor.get_fullname }}{% endblock title %}
+{% block content %}
+        <!-- hero-area start -->
+        <section class="breadcrumb-bg pt-200 pb-180" data-background="{% static 'img/page/page-bg.jpg' %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-9">
+                        <div class="page-title">
+                            <p class="small-text pb-15">Мы здесь для вашей заботы.</p>
+                            <h1>Подробности о докторе</h1>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 d-flex justify-content-start justify-content-md-end align-items-center">
+                        <div class="page-breadcumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb ">
+                                    <li class="breadcrumb-item">
+                                        <a href="{% url 'main_app:home' %}">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Details</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- hero-area end -->
+        <!-- service-details-area start -->
+        <div class="doctor-details-area pt-115 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-7 col-lg-8">
+                        <article class="doctor-details-box">
+                            <div class="section-title pos-rel mb-25">
+                                <div class="section-icon">
+                                    <img class="section-back-icon back-icon-left" src="{% static 'img/section/section-back-icon-sky.png' %}"
+                                        alt="">
+                                </div>
+                                <div class="section-text pos-rel">
+                                    <h5 class="green-color text-up-case">introducing my self</h5>
+                                    <h1>There Is Nothing To Show Something.</h1>
+                                </div>
+                                <div class="section-line pos-rel">
+                                    <img src="{% static 'img/shape/section-title-line.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="service-details-text mb-40">
+                                <p>{{ doctor.about_doctor }}</p>
+                            </div>
+                            <div class="section-title pos-rel mb-25">
+                                <div class="section-text pos-rel">
+                                    <h1>Here Is Skills</h1>
+                                </div>
+                                <div class="section-line pos-rel">
+                                    <img src="{% static 'img/shape/section-title-line.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="service-details-text mb-35">
+                                <p>
+                                    <ul>
+                                        {% for i in doctor.skills.all %}
+                                            <li>{{ i.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-xl-5 col-lg-4">
+                        <div class="service-widget mb-50">
+                            <div class="team-wrapper team-box-2 team-box-3 text-center mb-30">
+                                <div class="team-thumb">
+                                    <img src="{{ doctor.doctor_image.url }}" alt="">
+                                </div>
+                                <div class="team-member-info mt-35 mb-35">
+                                    <h3>{{ doctor.get_fullname }}</h3>
+                                    
+                                    <h6 class="f-500 text-up-case letter-spacing pink-color">
+                                        {% for i in doctor.specialities.all %}{{ i.name }},{% endfor %}</h6>
+                             
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-widget mb-50">
+                            <div class="widget-title-box mb-30">
+                                <h3 class="widget-title">Qualifications</h3>
+                            </div>
+                            <div class="more-service-list">
+                                <ul>
+                                    {% for i in doctor.qualifications.all %}
+                                    <li>
+                                        <a href="#">
+                                            <div class="more-service-icon"><img src="img/services/more-ser-1.png" alt=""></div>
+                                            <div class="more-service-title doctor-details-title">{{ i.title }} <span>{{ i.university_and_years }}</span></div>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock content %}     <!-- service-details-area end -->
+   
