@@ -17,9 +17,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb ">
                                     <li class="breadcrumb-item">
-                                        <a href="{% url 'main_app:home' %}">Home</a>
+                                        <a href="{% url 'main_app:home' %}">Главная</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Details</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Публикации</li>
                                 </ol>
                             </nav>
                         </div>
@@ -36,7 +36,7 @@
                     <div class="col-lg-8">
                         <article class="postbox post format-image mb-40">
                             <div class="postbox__thumb mb-35">
-                                <img src="{{ blog.image.url }}" alt="blog image" height="500px">
+                                <img src="{{ blog.image.url }}" alt="blog image" height="100%" style="object-fit: cover;">
                             </div>
                             <div class="postbox__text bg-none">
                                 <div class="post-meta mb-15">
@@ -51,7 +51,7 @@
                                 <div class="row mt-50">
                                     <div class="col-xl-8 col-lg-8 col-md-8 mb-15">
                                         <div class="blog-post-tag">
-                                            <span>Releted Tags</span>
+                                            <span>Связанные теги</span>
                                             {% for i in blog.tags.all %}
                                                 <a href="#">{{ i.name }}</a>
                                             {% endfor %}
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="author mt-80 mb-40">
+                            <!-- <div class="author mt-80 mb-40">
                                 <div class="author-img text-center">
                                     <img src="img/blog/details/author.png" alt="">
                                 </div>
@@ -71,7 +71,7 @@
                                         nisi ut aliquip ex
                                         ea commodo consequa aute irure dolor. </p>
                                 </div>
-                            </div>
+                            </div> -->
                         </article>
                     </div>
                     <div class="col-lg-4">
@@ -81,7 +81,7 @@
                                 <h3 class="widget-title">Поиск статей</h3>
                             </div>
                             <form class="search-form">
-                                <input type="text" placeholder="Search your keyword...">
+                                <input type="text" placeholder="Поиск...">
                                 <button type="submit"><i class="fas fa-search"></i></button>
                             </form>
                         </div>

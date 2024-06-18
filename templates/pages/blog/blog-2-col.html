@@ -16,9 +16,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb ">
                                     <li class="breadcrumb-item">
-                                        <a href="{% url 'main_app:home' %}">Home</a>
+                                        <a href="{% url 'main_app:home' %}">Главная</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Публикации</li>
                                 </ol>
                             </nav>
                         </div>
@@ -60,7 +60,7 @@
                                     <p>{{ i.post_text|safe|truncatechars:80 }}</p>
                                 </div>
                                 <div class="read-more">
-                                    <a href="{% url 'blog:blog_detail' i.slug %}" class="read-more">read more <i class="fas fa-long-arrow-alt-right"></i></a>
+                                    <a href="{% url 'blog:blog_detail' i.slug %}" class="read-more">ЧИТАТЬ ДАЛЕЕ <i class="fas fa-long-arrow-alt-right"></i></a>
                                 </div>
                             </div>
                         </article>
