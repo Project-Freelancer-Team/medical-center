@@ -17,9 +17,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb ">
                                     <li class="breadcrumb-item">
-                                        <a href="{% url 'main_app:home' %}">Home</a>
+                                        <a href="{% url 'main_app:home' %}">Главная</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Details</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Подробности</li>
                                 </ol>
                             </nav>
                         </div>
@@ -37,22 +37,22 @@
                             <div class="section-title pos-rel mb-25">
                                 <div class="section-icon">
                                     <img class="section-back-icon back-icon-left" src="{% static 'img/section/section-back-icon-sky.png' %}"
-                                        alt="">
+                                        alt="" style="z-index: -16 !important;" >
                                 </div>
                                 <div class="section-text pos-rel">
-                                    <h5 class="green-color text-up-case">introducing my self</h5>
-                                    <h1>There Is Nothing To Show Something.</h1>
+                                    <!-- <h5 class="green-color text-up-case">О враче</h5> -->
+                                    <h3>О враче</h3>
                                 </div>
                                 <div class="section-line pos-rel">
                                     <img src="{% static 'img/shape/section-title-line.png' %}" alt="">
                                 </div>
                             </div>
-                            <div class="service-details-text mb-40">
+                            <div class="service-details-text mb-40" style="z-index: 9999;">
                                 <p>{{ doctor.about_doctor }}</p>
                             </div>
                             <div class="section-title pos-rel mb-25">
                                 <div class="section-text pos-rel">
-                                    <h1>Here Is Skills</h1>
+                                    <h3>Специализация врача</h3>
                                 </div>
                                 <div class="section-line pos-rel">
                                     <img src="{% static 'img/shape/section-title-line.png' %}" alt="">
@@ -60,11 +60,13 @@
                             </div>
                             <div class="service-details-text mb-35">
                                 <p>
-                                    <ul>
+                                    <ul class="list-group">
                                         {% for i in doctor.skills.all %}
-                                            <li>{{ i.name }}</li>
+                                            <li class="list-group-item list-group-item-action" style="background-color: #e12454 !important; color: aliceblue;">{{ i.name }}</li>
                                         {% endfor %}
+
                                     </ul>
+
                                 </p>
                             </div>
                         </article>
@@ -76,7 +78,7 @@
                                     <img src="{{ doctor.doctor_image.url }}" alt="">
                                 </div>
                                 <div class="team-member-info mt-35 mb-35">
-                                    <h3>{{ doctor.get_fullname }}</h3>
+                                    <h3>{{ doctor.get_full_name }}</h3>
                                     
                                     <h6 class="f-500 text-up-case letter-spacing pink-color">
                                         {% for i in doctor.specialities.all %}{{ i.name }},{% endfor %}</h6>
@@ -84,9 +86,11 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-xl-12 col-lg-12">
                         <div class="service-widget mb-50">
                             <div class="widget-title-box mb-30">
-                                <h3 class="widget-title">Qualifications</h3>
+                                <h3 class="widget-title">Квалификация</h3>
                             </div>
                             <div class="more-service-list">
                                 <ul>

@@ -17,9 +17,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb ">
                                     <li class="breadcrumb-item">
-                                        <a href="{% url 'main_app:home' %}">Home</a>
+                                        <a href="{% url 'main_app:home' %}">Главная</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Doctor</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Специалисты</li>
                                 </ol>
                             </nav>
                         </div>
@@ -46,6 +46,31 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="form">
+                    <h2>Поиск специалиста по ФИО</h2>
+                    <form method="GET">
+                        <div class="row mt-2">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="full_name" class="form-label">ФИО врача</label>
+                                    <input type="text" class="form-control" id="full_name" name="full_name" value="{{ request.GET.full_name }}">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="category" class="form-label">Направление</label>
+                                    <select class="form-control" id="category" name="category">
+                                        <option value="">Направление</option>
+                                        {% for item in service %}
+                                        <option value="{{ item.id }}" {% if request.GET.category == item.id|stringformat:"s" %}selected{% endif %}>{{ item.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Поиск</button>
+                    </form>
                 </div>
                 <div class="row">
                     {% for i in doctors %}

@@ -25,7 +25,7 @@ class Specialities(models.Model):
 
 class Qualifications(models.Model):
     title = models.CharField(max_length=150)
-    university_and_years = models.CharField(max_length=250)
+    university_and_years = models.TextField(null=True, blank=True)
     owner = models.ForeignKey(DoctorsOrUsers, related_name="qualifications", on_delete=models.CASCADE, blank=True, null=True)
     
     
