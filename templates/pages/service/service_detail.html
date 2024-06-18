@@ -1,6 +1,13 @@
 {% extends 'wrapper.html' %}
 {% load static %}
 {% block content %}
+<style>
+    .lnk:hover{
+        background-color: #e12454 !important;
+        color: aliceblue;
+        font-weight: 500px;
+    }
+</style>
     <section class="about-area pt-120 pb-90">
         <div class="container">
             <div class="row">
@@ -12,10 +19,15 @@
                                 <p>
                                     {{ service.description }}
                                 </p>
-                                <div>
-                                    <h4>Doctors:</h4>
-                                    <h6>{{ service.doctors }}</h6>
+                            </div>
+                            <div class="row">
+                                {% for item in service.service_cate.all %}
+                                <div class="col-lg-4 mt-3">
+                                    <ul class="list-group">
+                                        <a href="{% url 'service_app:service_category_deteaile' item.slug %}" class="list-group-item list-group-item-action lnk">{{item.name}}</a>
+                                      </ul>
                                 </div>
+                                {% endfor %}
                             </div>
                             <div class="section-button text-right d-none d-lg-block pt-80">
                                 <a data-animation="fadeInLeft" data-delay=".6s" href="{% url 'appointment:appointment_main' %}"

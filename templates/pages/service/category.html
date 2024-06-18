@@ -1,0 +1,60 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block content %}
+<section class="about-area pt-120 pb-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-4 col-md-6">
+                <div class="service-box-3 mb-30 text-center">
+                    <div class="service-content-box">
+                        <div class="service-content">
+                            <h3>{{ objects.name }}</h3>
+                            <p>
+                                {{ objects.description }}
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 mt-3">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col" style="width: 80%;">Название</th>
+                                        <th scope="col" style="width: 20%;">Цена, руб</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in objects.service_price.all %}
+                                        <tr>
+                                            <td>{{item.name}}</td>
+                                            <td>{{item.price}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                  </table>
+                            </div>
+                        </div>
+                        <h2 class="mt-2">Ведущие специалисты</h2>
+                        <div class="row">
+                            {% for item in objects.service_doctor.all %}
+                            <div class="col-lg-4 mt-3">
+                                <div class="card" style="width: 18rem;">
+                                    {% if item.doctor.doctor_image %}
+                                    <img src="{{item.doctor.doctor_image.url}}" class="card-img-top" alt="...">
+                                    {% endif %}
+                                    <div class="card-body">
+                                      <h5 class="card-title">{{item.doctor.get_full_name}}</h5>
+                                      <p class="card-text">{{item.doctor.doctor_type}}</p>
+                                      <!-- <a href="#" class="btn btn-primary">Записаться на прием</a> -->
+                                    </div>
+                                  </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        <!-- Services main end -->
+    </div>
+</section>
+{% endblock content%}

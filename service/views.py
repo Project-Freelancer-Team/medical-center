@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from .models import Services
+from .models import Services, ServieCategory, ServiceDoctor, SerivePrice
 
 
 class ServiceView(View):
@@ -38,3 +38,9 @@ class ServiceDetailView(View):
     def post(self, request, *args, **kwargs):
         context = self.get_context_data()
         return render(request, self.template_name, context)
+
+
+def service_category_deteaile(request, slug):
+    context = {}
+    context['objects'] = ServieCategory.objects.get(slug=slug)
+    return render(request, 'pages/service/category.html', context)
