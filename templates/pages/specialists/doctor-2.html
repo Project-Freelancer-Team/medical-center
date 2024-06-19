@@ -2,6 +2,14 @@
 {% load static %}
 {% block title %}Doctors{% endblock title %}
 {% block content %}
+<style>
+    
+    @media (max-width: 460px) {
+        .btn-serach{
+        display: block !important;
+      }
+    }
+</style>
         <!-- hero-area start -->
         <section class="breadcrumb-bg pt-200 pb-180" data-background="{% static 'img/page/page-bg.jpg' %}">
             <div class="container">
@@ -69,7 +77,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Поиск</button>
+                        <button type="submit" class="btn btn-primary btn-serach">Поиск</button>
                     </form>
                 </div>
                 <div class="row">

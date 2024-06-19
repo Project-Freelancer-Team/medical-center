@@ -12,7 +12,7 @@
                                 <div class="row">
                                     <div class="col-xl-12">
                                         <div class="about-title news-letter-title mb-70">
-                                            <h5 class="pink-color">Встреча</h5>
+                                            <!-- <h5 class="pink-color">Встреча</h5> -->
                                             <h1>Записаться на прием</h1>
                                         </div>
                                     </div>
@@ -21,10 +21,10 @@
                                     <div class="col-xl-12">
                                         <form method="POST">
                                             {% csrf_token %}
-                                            <div class="name">
+                                            <!-- <div class="name">
                                                 <label for="name">получить консультанта ?</label><br>
                                                 <input type="checkbox" name="check" style="width:18px;height:18px;" value="False">
-                                            </div>
+                                            </div> -->
                                             <div class="name">
                                                 <label for="name_surname">Ваше имя и фамилия</label>
                                                 <input type="text" name="name_surname" class="form-control" required>
@@ -50,7 +50,7 @@
                                                 <input type="date" name="date" class="form-control" required>
                                             </div>
                                             <div class="name">
-                                                <label for="name">Врем</label>
+                                                <label for="name">Время</label>
                                                 <input type="time" name="time" class="form-control" required>
                                             </div>
                                             <div class="button d-flex justify-content-center">

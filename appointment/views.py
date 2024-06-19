@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 
-from service.models import Services
+from service.models import Services, ServieCategory
 from users.models import DoctorsOrUsers
 from .models import Appointment
 
@@ -18,7 +18,7 @@ class AppointmentView(View):
     
     def  get_context_data(self):
         context = {
-            "services" : Services.objects.all(),
+            "services" : ServieCategory.objects.all(),
             "doctors" : DoctorsOrUsers.objects.filter(is_doctor = True)
         }
         return context
@@ -30,16 +30,14 @@ class AppointmentView(View):
 
     def post(self, request):
         context = self.get_context_data()
-        for_consultation = True if request.POST.get("check") else False
         name_and_surname = request.POST.get("name_surname")
-        service = Services.objects.get(id = request.POST.get("service"))
+        service = ServieCategory.objects.get(id = request.POST.get("service"))
         doctor = DoctorsOrUsers.objects.get(id = request.POST.get("doctor"), is_doctor=True)
         user = DoctorsOrUsers.objects.get(id=request.user.id)
         date = request.POST.get("date")
         time = request.POST.get("time")
         if "appointment" in request.POST:
             object = Appointment.objects.create(
-                for_consultation = for_consultation,
                 name_and_surname = name_and_surname,
                 service = service,
                 doctor = doctor,
