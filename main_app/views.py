@@ -48,3 +48,7 @@ class ReviewView(View):
                 body = body
             )
         return render(request, self.template_name, context)
+    
+
+def contact(request):
+    return render(request, 'pages/contact.html')
