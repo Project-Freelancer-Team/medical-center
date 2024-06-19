@@ -1,6 +1,13 @@
 {% extends "wrapper.html" %}
 {% load static %}
 {% block content %}
+<style>
+  @media (max-width: 460px) {
+        .btn3 {
+            display: flex !important;
+        }
+    }
+</style>
         <!-- hero-area start -->
         <section class="hero-area">
             <div class="hero-slider">
@@ -13,10 +20,9 @@
                                         <div class="hero-slider-caption ">
                                             <h5 data-animation="fadeInUp" data-delay=".2s">Мы здесь для вашей заботы</h5>
                                             <h1 data-animation="fadeInUp" data-delay=".4s">Краткий рассказ о нашей клинике</h1>
-                                            <p data-animation="fadeInUp" data-delay=".6s">Нажмите Далее</p>
                                         </div>
                                         <div class="hero-slider-btn">
-                                            <a data-animation="fadeInLeft" data-delay=".6s" href="{% url 'appointment:appointment_main' %}" class="btn btn-icon ml-0"><span>+</span>Назначить встречу</a>
+                                            <a data-animation="fadeInLeft" data-delay=".6s" href="{% url 'appointment:appointment_main' %}" class="btn btn-icon ml-0 btn3"><span>+</span>Назначить встречу</a>
                                         </div>
                                     </div>
                                 </div>
@@ -29,14 +35,19 @@
                                 <div class="col-xl-6 col-lg-8 col-md-10">
                                     <div class="hero-text">
                                         <div class="hero-slider-caption ">
-                                            <h5 data-animation="fadeInUp" data-delay=".2s">Мы здесь для вашей заботы</h5>
-                                            <p data-animation="fadeInUp" data-delay=".6s">
+                                            <h5 data-animation="fadeInUp" data-delay=".2s" style="font-size: 18px;font-family: 'Rubik', sans-serif;font-weight: 500;color: #647589;">Мы здесь для вашей заботы</h5>
+                                            <h5 data-animation="fadeInUp" data-delay=".6s" style="font-family: 'Poppins', sans-serif;
+                                            color: #223645;
+                                            margin-top: 0px;
+                                            font-weight: 600;
+                                            text-transform: normal;
+                                            line-height: 1.1;">
                                                 Наша клиника работает 24 часа в сутки, 7 дней в неделю, мы к вашим услугам в любое время, когда вы захотите.
                                                  наши специалисты мастера своего дела
-                                            </p>
+                                            </h5>
                                         </div>
                                         <div class="hero-slider-btn">
-                                            <a data-animation="fadeInLeft" data-delay=".6s" href="{% url 'appointment:appointment_main' %}" class="btn btn-icon ml-0"><span>+</span>Назначить встречу</a>
+                                            <a data-animation="fadeInLeft" data-delay=".6s" href="{% url 'appointment:appointment_main' %}" class="btn btn-icon ml-0 btn3"><span>+</span>Назначить встречу</a>
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +81,7 @@
                                 <h1>1M+</h1>
                                 <h5> <i class="fas fa-user"></i>Довольные пациенты</h5>
                                 <p>
-                                    Мы оказали терпение более 1 миллиону человек, и все они остались довольны нашими услугами и нашли решение своей проблемы.
+                                    Мы оказали помощь более 1 миллиону человек, и все они остались довольны нашими услугами и нашли решение своей проблемы.
                                 </p>
                             </div>
                             <div class="single-satisfied mb-50">
