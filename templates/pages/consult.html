@@ -80,11 +80,11 @@
         // Show loading message
         const chatBox = document.getElementById('chat-box');
         const loadingMessage = document.createElement('p');
-        loadingMessage.innerHTML = '<strong>Консультация:</strong> Подождите, пожалуйста...';
+        loadingMessage.innerHTML = '<strong>Консультация:</strong> Подождите, пожалуйста... Решено за 1 минуту';
         chatBox.appendChild(loadingMessage);
 
         try {
-            const response = await fetch('https://test.uni-point.ru/consultation/', {
+            const response = await fetch('http://127.0.0.1:8000/consultation/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
