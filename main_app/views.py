@@ -57,3 +57,19 @@ def contact(request):
     return render(request, 'pages/contact.html')
 from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
+def consult(request):
+    openai.api_key = settings.OPENAI_API_KEY
+    if request.method == 'POST':
+        user_message = request.POST.get('message')
+        if user_message:
+            response = openai.ChatCompletion.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {"role": "user", "content": user_message}
+                ]
+            )
+            gpt_message = response.choices[0].message['content'].strip()
+            return JsonResponse({'message': gpt_message})
+    return render(request, 'pages/consult.html')
