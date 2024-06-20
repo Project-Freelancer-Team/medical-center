@@ -2,6 +2,14 @@
 {% load static %}
 {% block title %}Appointment{% endblock title %}
 {% block content %}
+<style>
+      @media (max-width: 460px) {
+            .bt{
+                display: block !important;
+            }
+          }
+    
+</style>
         <!-- calculate-area start -->
         <section class="appointment-area appointment-area-3 pos-rel pt-115 pb-120" data-background="{% static 'img/appoinment/appointment-bg.jpg' %}">
             <div class="container">
@@ -53,8 +61,8 @@
                                                 <label for="name">Время</label>
                                                 <input type="time" name="time" class="form-control" required>
                                             </div>
-                                            <div class="button d-flex justify-content-center">
-                                                <button name="appointment" type="submit" class="btn mt-40" >Отправить запрос</button>
+                                            <div class="button d-flex justify-content-center bt">
+                                                <button name="appointment" type="submit" class="btn mt-40 bt" >Отправить запрос</button>
                                             </div>
                                         </form>
                                     </div>
