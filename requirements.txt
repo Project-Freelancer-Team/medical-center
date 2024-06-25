@@ -12,6 +12,9 @@ Django==4.2.10
 django-ckeditor==6.7.1
 django-js-asset==2.2.0
 django-paginator==0.2a3
+django-ranged-response==0.2.0
+django-recaptcha==4.0.0
+django-simple-captcha==0.6.0
 frozenlist==1.4.1
 h11==0.14.0
 httpcore==1.0.5
