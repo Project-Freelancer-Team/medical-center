@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -118,7 +119,7 @@ CKEDITOR_CONFIGS = {
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'Asia/Tashkent'
 
@@ -146,3 +147,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
+RECAPTCHA_PUBLIC_KEY = '6LeW8QAqAAAAAKXulco-FDXsnQ0012Ciw0p4IpPU'
+RECAPTCHA_PRIVATE_KEY = '6LeW8QAqAAAAAFFj2FWgtZOOsL8gNDFDRycRvmTy'

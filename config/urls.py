@@ -11,6 +11,7 @@ urlpatterns = [
     path('doctors/', include("doctors.urls", namespace="doctors_app")),
     path('blog/', include("blog.urls", namespace="blog")),
     path('appointment/', include("appointment.urls", namespace="appointment")),
+     path('captcha/', include('captcha.urls')),
 ]
 
 if settings.DEBUG:

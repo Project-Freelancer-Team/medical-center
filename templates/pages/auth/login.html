@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %}Login{% endblock title %}
 {% block content %}
+<script src="https://www.google.com/recaptcha/enterprise.js?render=6Lf_1AAqAAAAACvGmTVwOybd7djlDUdBqzZ7rQO6"></script>
 <section class="login-area pt-100 pb-100">
     <div class="container">
         <div class="row">
@@ -17,10 +18,11 @@
                         <h3 class="text-center mb-60">Войти отсюда</h3>
                         <form method="POST">
                             {% csrf_token %}
-                            <label for="name">Адрес электронной почты<span>**</span></label>
+                            {{ form.as_p }}
+                            <!-- <label for="name">Адрес электронной почты<span>**</span></label>
                             <input id="name" type="text" name="username" />
                             <label for="pass">Пароль <span>**</span></label>
-                            <input id="pass" type="password" name="password"/>
+                            <input id="pass" type="password" name="password"/> -->
                             <button class="btn btn-icon-green w-100" name="login" style="display: flex !important;justify-content: center;">Войти сейчас</button>
                             <div class="or-divide"><span>or</span></div>
                             <a href="{% url 'users:register' %}" class="btn theme-btn w-100" style="display: flex !important;justify-content: center;">Зарегистрироваться</a>
@@ -30,5 +32,14 @@
         </div>
     </div>
 </section>
+
+<!-- <script>
+    function onClick(e) {
+      e.preventDefault();
+      grecaptcha.enterprise.ready(async () => {
+        const token = await grecaptcha.enterprise.execute('6Lf_1AAqAAAAACvGmTVwOybd7djlDUdBqzZ7rQO6', {action: 'LOGIN'});
+      });
+    }
+  </script> -->
 {% endblock content %}
        

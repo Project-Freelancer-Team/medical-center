@@ -38,10 +38,10 @@
                                                 <input type="text" name="name_surname" class="form-control" required>
                                             </div>
                                             <div class="name">
-                                                <label for="name">Выберите услугу</label>
-                                                <select name="service" id="" class="form-control">
+                                                <label for="service">Выберите услугу</label>
+                                                <select name="service" id="service" class="form-control">
                                                     {% for i in services %}
-                                                    <option value="{{ i.id }}">{{ i.name }}</option>
+                                                    <option value="{{ i.id }}" data-tokens="ketchup mustard">{{ i.name }}</option>
                                                     {% endfor %}
                                                 </select>
                                             </div>
